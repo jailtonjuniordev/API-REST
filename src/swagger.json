@@ -1,0 +1,13 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Modelo de API NodeTS + PrismaORM",
+        "description": "Essa API tem como função, agilizar o setup da aplicação acima citada, para que seja agilizado todos os conceitos necessários, para inicialização.",
+        "contact": {
+            "name": "Jailton Júnior",
+            "email": "jailtonjr99@hotmail.com.br"
+        },
+        "version": "1.0.0"
+    }
+    
+}
