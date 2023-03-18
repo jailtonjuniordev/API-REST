@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import carUseCase from '../useCase/carUseCase';
+import carUseCase from '../repository/carRepository';
 
 export default class carController {
     async createCar(req: Request, res: Response) {

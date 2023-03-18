@@ -3,7 +3,7 @@ import { Car } from "@prisma/client";
 import prismaClient from "../../../services/prismaClient";
 import AppError from "../../../errors/AppError";
 
-export default class carUseCase {
+export default class carRepository {
     async createCar({
         cor,
         nome,
