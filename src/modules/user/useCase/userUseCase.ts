@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { User } from "@prisma/client";
-import prismaClient from '../../../services/prismaClient';
+import prismaClient from '../../../database/prismaClient';
 import AppError from '../../../errors/AppError';
 import * as DTO from '../DTO/userDTO';
 import * as bcrypt from "bcrypt";
