@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import userUseCase from '../useCase/userUseCase';
+import userUseCase from '../useCase/userRepository';
 
 interface getDTO {
     id: string;

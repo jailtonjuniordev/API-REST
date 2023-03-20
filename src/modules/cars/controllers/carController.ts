@@ -20,7 +20,6 @@ export default class carController {
             user_id,
             comprado } = req.params;
 
-        
         return res
         .status(200)
         .json(await new carUseCase().getCars({
@@ -28,9 +27,8 @@ export default class carController {
             cor,
             nome,
             user_id,
-            comprado
+            comprado,
         }));
-
     }
 
     async editCar(req: Request, res: Response){

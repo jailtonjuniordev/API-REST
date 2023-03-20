@@ -5,11 +5,11 @@ import AppError from '../../../errors/AppError';
 import * as DTO from '../DTO/userDTO';
 import * as bcrypt from "bcrypt";
 
-export default class userUseCase {
+export default class userRepository {
     async createUser({
         nome,
         senha}: DTO.createUser):Promise<User> {
-
+    
         const nomeAlreadyExists = await prismaClient.user.findUnique({
             where: {
                 nome
@@ -17,11 +17,11 @@ export default class userUseCase {
         });
         
         if (nomeAlreadyExists) {
-            throw new AppError("Nome Já cadastrado!", 406);
+            throw new AppError("Nome Já cadastrado!", 409);
         }
 
         if (nome.trim().length === 0) {
-            throw new AppError("O nome não pode ser vázio!", 406);
+            throw new AppError("O nome não pode ser vázio!", 400);
         }
 
         return await prismaClient.user.create({

@@ -8,6 +8,92 @@
             "email": "jailtonjr99@hotmail.com.br"
         },
         "version": "1.0.0"
+    }, 
+    "servers": [
+        {
+            "url":"http://localhost:8080/api/v1",
+            "description": "TESTE DA API"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "summary": "Cadastro de usuario",
+                "description": "Essa rota será responsável por cadastrar um novo usuario",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "nome": "Jailton Júnior",
+                                        "senha": "12345"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "409": {
+                        "description": "Usuario já está cadastrado!"
+                    },
+                    "400": {
+                        "description": "Bad Request! Verifique os campos e tente novamente!"
+                    },
+                    "201": {
+                        "description": "Created!"
+                        
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string",
+                        "format": "password"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "cars": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "cor": {
+                                "type": "string"
+                            },
+                            "nome": {
+                                "type": "string"
+                            },
+                            "comprado": {
+                                "type": "boolean"
+                            },
+                            "user_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }

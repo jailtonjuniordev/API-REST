@@ -2,8 +2,6 @@ import * as DTO from "../DTO/carDTO";
 import { Car } from "@prisma/client";
 import prismaClient from "../../../database/prismaClient";
 import AppError from "../../../errors/AppError";
-import carServices from "../services/carServices";
-
 
 export default class carRepository {
     async createCar({
@@ -13,13 +11,14 @@ export default class carRepository {
         comprado
     }: DTO.createCar): Promise<Car> {
 
-       await new carServices().verificarNulidade({
-            cor,
-            nome,
-            user_id,
-            comprado
-        })
-        
+        if (cor.trim().length === 0) {
+            throw new AppError("A cor do carro não pode ser vázia!", 400);
+        } else if (nome.trim().length === 0) {
+            throw new AppError("O nome do carro não pode ser vázio!", 400);
+        } else if (user_id.trim().length === 0) {
+            throw new AppError("O ID do usuário não pode ser vázio!", 400);
+        }
+
         return await prismaClient.car.create({
             data: {
                 nome,
@@ -77,7 +76,7 @@ export default class carRepository {
 
         if(!car) {
             throw new AppError("Carro não encontrado", 404);
-        }
+        } 
 
         return await prismaClient.car.update({
             where: {
